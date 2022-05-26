@@ -12,6 +12,11 @@ body {
     border-left: 1px solid black;
     padding: 10px;
   }
+ 
+  /* Adding hover response for the time block rows */
+  textarea:hover {
+      background-color: grey;
+  }
   
   .jumbotron {
     text-align: center;
@@ -28,6 +33,11 @@ body {
   .time-block {
     text-align: center;
     border-radius: 15px;
+  }
+
+  /* Adding hover response for the time block rows */
+  .time-block:hover {
+    box-shadow: 10px 5px 5px grey;
   }
   
   .row {
@@ -65,11 +75,18 @@ body {
     color: white;
   }
   
-  .saveBtn i:hover {
+  .saveBtn:hover {
     font-size: 20px;
-    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    border: 3px dotted ;
+    transition: all 0.2s ease-in-out;
   }
-  
+/* Added responsiveness to user's click on the save button (white flash w/ fade out) */
+  .saveBtn:active {
+    background-color: #ffffff;
+    transition: all 0.02s ease-out;
+  }
+  /* hide alerts deafult */
   .alert {
       display:none;
   }

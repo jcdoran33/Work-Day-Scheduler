@@ -1,6 +1,4 @@
-// var firstHour = $("#9am").children().eq(1).attr("id");
-//     console.log(firstHour); 
-// var hourBlocks = []
+
 //display today's date at top of scheduler
 var todaysDate = moment().format("MMMM Do, YYYY");
 $("#currentDay").text("Today is " + todaysDate);
@@ -8,18 +6,18 @@ $("#currentDay").text("Today is " + todaysDate);
 //colorSchedule will color each row - grey in past, green in future, red current hour
 function colorSchedule() {
     var currentHour = moment().format("Ha");
-    console.log(currentHour);
+    // console.log(currentHour);
     // for loop, compare current hour to hours on schedule, color accoridngly
     for (i = 0; i < 9; i++) {
         // create var to store the current iteration
         var currentCheck = $("#container").children().eq(i).attr("id");
-        console.log(currentCheck);
+        // console.log(currentCheck);
 
         //make it an integer
         var currentCheckInt = parseInt(currentCheck);
-            console.log(currentCheckInt);
+            // console.log(currentCheckInt);
         var currentHourInt = parseInt(currentHour);
-            console.log(currentHourInt);
+            // console.log(currentHourInt);
 
         // added this so that we can do comparisons in H or military time format
         // alternatively, we could just re-id the blocks in military time in index.html, ie 09-16
@@ -41,16 +39,18 @@ function colorSchedule() {
 
 //loadSavedEvents function definition - load any saved events from local storage into the appropriate rows
 function loadSavedEvents() {
+        console.log("Function loadSavedEvents has been launched!")
     //iterate loop - for each row, check if there is a matching key value pair in storage, if so load it to textarea. If not, move to next
     for (i=0; i < 9; i++) {
         //variable creation
         var timeBlock = $("#container").children().eq(i).attr("id");
             console.log("Current timeBlock: " + timeBlock);
-        //querying from local storage
-        var storedText = localStorage.getItem(timeBlock)
-        $("#container").children(i).children().eq(1).text(storedText);
+        //querying from local storage, then pushing that content to the appropriate textarea
+        var storedText = localStorage.getItem(timeBlock);
+        // target the i'th row and the 2nd (or [1]) column (which is the textarea)
+        $("#container").children().eq(i).children().eq(1).text(storedText);
             console.log(timeBlock);
-            console.log(localStorage.getItem(timeBlock));
+            console.log(storedText);
     };
 };
 
@@ -71,7 +71,7 @@ $(".saveBtn").click(function (event) {
     $(".alert").css("justify-content","center");
     $(".alert").css("position","absolute");
     $(".alert").css("z-index","999");
-    $(".alert").fadeOut(3500);
+    $(".alert").fadeOut(4000);
 });
 
 
